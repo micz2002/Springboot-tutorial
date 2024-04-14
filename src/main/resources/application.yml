@@ -1,0 +1,65 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: qa
+---
+
+spring:
+  datasource:
+    password: 1234
+    url: jdbc:mysql://localhost:3306/dcbapp
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    activate:
+      on-profile: dev
+welcome:
+  message: Zaden hemoroid nie przeszkodzi mi treningu!
+
+---
+
+spring:
+  datasource:
+    password: 1234
+    url: jdbc:mysql://localhost:3306/dcbapp-qa
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    activate:
+      on-profile: qa
+welcome:
+  message: Zaden hemoroid nie przeszkodzi mi treningu!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"ąą
+
+---
+
+spring:
+  datasource:
+    password: 1234
+    url: jdbc:mysql://localhost:3306/dcbapp-prod
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    activate:
+      on-profile: prod
+welcome:
+  message: Zaden hemoroid nie przeszkodzi mi treningu!
+
+---
